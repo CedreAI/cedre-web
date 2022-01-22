@@ -11,6 +11,7 @@ package-lock.json
 .DS_Store
 electron/dist
 electron/pub
+/webapp
 **/.idea
 /config.local*.json
 /src/component-index.js
