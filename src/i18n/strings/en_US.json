@@ -220,7 +220,7 @@
         "Only people who have been invited": "فقط افرادی که دعوت شده اند",
         "Everyone": "همه",
         "Community Name": "نام جامعه",
-        "Save": "نجات",
+        "Save": "ذخیره‌سازی",
         "Share Community": "اشتراک گذاری جامعه",
         "Community %(groupId)s not found', { groupId: this.props.groupId ": "جامعه %(groupId)s not found', {groupId: this.props.groupId ",
         "This homeserver does not support communities": "این خانه سرور از جامعه ها پشتیبانی نمی کند",
