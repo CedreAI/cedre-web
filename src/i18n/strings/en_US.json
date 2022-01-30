@@ -1,6 +1,22 @@
 
 
 {
+    "Create new room" : "ایجاد یک اتاق",
+    "Create a private room" : "ایجاد یک اتاق خصوصی",
+    "Enable end-to-end encryption" : "فعال‌سازی رمز پیام - بهترست از آن استفاده نکنید",
+    "You can't disable this later. Bridges & most bots won't work yet" : "براحتی نمی‌توان آنرا بعدها تغییر داد",
+    "Only people invited will be able to find and join this room. You can change this at any time from room settings" : "افراد تنها با دعوت بتوانند بپیوندد (قابل تغییر در آینده)",
+    "Private room": "اتاق خصوصی",
+    "invite only": "تنها با دعوت"
+    "Explore public rooms" : "گشت در اتاقهای عمومی",
+    "Matrix rooms" : "اتاق‌های پیام‌رسان",
+    "Favorite" : "اتاق مورد علاقه",
+    "Low Priority" : "کم کردن اولویت",
+    "Copy room link": "کپی کردن لینک اتاق",
+    "Private room (invite only)": "اتاق شخصی ورود تنها با دعوت",
+    "You might enable this if the room will only be used for collaborating with internal teams on your homeserver. This cannot be changed later." : "اتاق تنها برای محموعه سرور شماست -- این گزینه بعدا قابل تغییر نیست.",
+    "Room options": "تنظیمات اتاق",
+    "List options": "فهرست انتخابها",
     "Expand" : "باز شدن",
     "GO" : "اجرا کن",
     "SUGGESTIONS" : "پیشنهادات",
