@@ -1,6 +1,10 @@
 
 
 {
+    "Edit":"ویرایش",
+    "React":"واکنش",
+    "Reply":"پاسخ",
+    "In reply to": "در پاسخ به ",
     "Download": "دریافت فایل",
     "Send voice message": "فرستادن پیام صوتی",
     "Show stickers": "فرستادن استیکر",
