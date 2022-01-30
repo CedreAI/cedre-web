@@ -1,6 +1,18 @@
 
 
 {
+    "Matrix rooms": "اتاق‌های پیام‌رسان",
+    "Write an option": "گزینه‌ای بنویسید",
+    "Write Something": "متنی بنویسید",
+    "Option": "انتخاب",
+    "Question or topic": "سوال یا موضوع",
+    "Add option": "افزودن گزینه‌های انتخاب",
+    "Create options": "انتخابها را تعیین بفرمایید",
+    "What is your poll question or topic?": "سوال نظر سنجی",
+    "Create Poll": "ایجاد نظر سنجی",
+    "All rooms": "همه اتاقها",
+    "Show all rooms": "نمایش همه اتاقها",
+    "joined the room": "به این اتاق پیوست.",
     "Admin": "ادمین",
     "hours ago": "ساعت پیش",
     "Invite to": "دعوت به ",
