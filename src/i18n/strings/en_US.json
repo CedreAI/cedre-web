@@ -1,6 +1,24 @@
 
 
 {
+    "Expand" : "باز شدن",
+    "GO" : "اجرا کن",
+    "SUGGESTIONS" : "پیشنهادات",
+    "RECENT CONVERSATIONS" : "مکالمات اخیر",
+    "OR SEND INVITE LINK" : "یا لینک دعوتنامه را بنویسید",
+    "Direct Messages" : "پیام‌های مستقیم",
+    "Start chat" : "شروع چت",
+    "Give feedback" : "در این مورد نظر بدهید",
+    "Spaces are a new feature":"فضاها یک ویژگی جدیدند",
+    "communities": "گروه‌ها",
+    "To join a space you'll need an invite.": "برای پیوستن به یک فضا دعوت نیازست."
+    "You can also make Spaces from": "شما می‌توانید فضا‌ها را بسازید از"
+    "Public" : "فضای عمومی",
+    "Private" : "فضای خصوصی",
+    "Open space for anyone, best for communities" :  "فضای عمومی برای همه عزیزان",
+    "Invite only, best for yourself or teams" :  "فضای خصوصی برای گفت‌وگوی شما و عزیزان دیگر",
+    "Spaces are a new way to group rooms and people. What kind of Space do you want to create? You can change this later." :  "چگونه فضایی می‌خواهید ایجاد کنید؟ این انتخاب را بعدا می‌توانید تغییر دهید.",    
+    "Create a space" : "ایجاد یک فضا",
     "Check for update": "جست‌وجوی بروز رسانی",
     "Preferences": "ترجیحات کاربری",        
     "Keyboard": "تنظیمات صفحه کلید",        
