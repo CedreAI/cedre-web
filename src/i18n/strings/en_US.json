@@ -1,6 +1,9 @@
 
 
 {
+    "Download": "دریافت فایل",
+    "Send voice message": "فرستادن پیام صوتی",
+    "Show stickers": "فرستادن استیکر",
     "Create new room" : "ایجاد یک اتاق",
     "Create a private room" : "ایجاد یک اتاق خصوصی",
     "Enable end-to-end encryption" : "فعال‌سازی رمز پیام - بهترست از آن استفاده نکنید",
