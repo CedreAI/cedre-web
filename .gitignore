@@ -20,3 +20,6 @@ electron/pub
 .vscode
 .vscode/
 .env
+
+/webapp
+webapp.zip
