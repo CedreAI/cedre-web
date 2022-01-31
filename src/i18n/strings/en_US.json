@@ -479,8 +479,10 @@
         "Link to selected message": "لینک به پیام انتخاب شده",
         "Missing session data": "عدم دسترسی به داده های جلسه",
         "Upload files": "دانلود فایل ها",
-        "Upload": "اپل",
-        "Upload %(count)s other files', { count: howManyOthers ": "دانلود %(count)s فایل های دیگر', { count: howManyOthers ",
+        "Upload": "بارگذاری",
+            "Upload all": "بارگذاری همه",
+    "Upload %(count)s other files', { count: howManyOthers ": "دانلود %(count)s فایل های دیگر', { count: howManyOthers ",
+    
         "Reset": "Reset",
         "Security Key": "کلید امنیتی",
         "Popout widget": "استفاده از widget",
