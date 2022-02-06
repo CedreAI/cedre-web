@@ -1,7 +1,11 @@
 
 
 {
+    "result": "نتیجه",
+    "Message deleted": "پیام پاک شد",
+    "Quote": "نقل قول",
     "Edit":"ویرایش",
+    "Add reaction":"واکنش",
     "React":"واکنش",
     "Reply":"پاسخ",
     "In reply to": "در پاسخ به ",
@@ -77,6 +81,7 @@
     "Add option": "افزودن گزینه‌های انتخاب",
     "Create options": "انتخابها را تعیین بفرمایید",
     "What is your poll question or topic?": "سوال نظر سنجی",
+    "Create poll": "ایجاد نظر سنجی",
     "Create Poll": "ایجاد نظر سنجی",
     "All rooms": "همه اتاقها",
     "Show all rooms": "نمایش همه اتاقها",
