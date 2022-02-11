@@ -32,7 +32,7 @@ import * as Lifecycle from "matrix-react-sdk/src/Lifecycle";
 import type MatrixChatType from "matrix-react-sdk/src/components/structures/MatrixChat";
 import SdkConfig, { parseSsoRedirectOptions } from "matrix-react-sdk/src/SdkConfig";
 import { logger } from "matrix-js-sdk/src/logger";
-
+import { PersianNumber } from 'react-persian';
 import { parseQs, parseQsFromFragment } from './url_utils';
 import VectorBasePlatform from "./platform/VectorBasePlatform";
 import { createClient } from "matrix-js-sdk/src/matrix";
@@ -182,16 +182,16 @@ export async function loadApp(fragParams: {}) {
 
     const MatrixChat = sdk.getComponent('structures.MatrixChat');
     return <MatrixChat
-        onNewScreen={onNewScreen}
-        makeRegistrationUrl={makeRegistrationUrl}
-        config={config}
-        realQueryParams={params}
-        startingFragmentQueryParams={fragParams}
-        enableGuest={!config.disable_guests}
-        onTokenLoginCompleted={onTokenLoginCompleted}
-        initialScreenAfterLogin={getScreenFromLocation(window.location)}
-        defaultDeviceDisplayName={platform.getDefaultDeviceDisplayName()}
-    />;
+    onNewScreen={onNewScreen}
+    makeRegistrationUrl={makeRegistrationUrl}
+    config={config}
+    realQueryParams={params}
+    startingFragmentQueryParams={fragParams}
+    enableGuest={!config.disable_guests}
+    onTokenLoginCompleted={onTokenLoginCompleted}
+    initialScreenAfterLogin={getScreenFromLocation(window.location)}
+    defaultDeviceDisplayName={platform.getDefaultDeviceDisplayName()}
+/>;
 }
 
 async function verifyServerConfig() {
