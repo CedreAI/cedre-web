@@ -3,9 +3,6 @@
         "m.homeserver": {
             "base_url": "https://parsi.ai",
             "server_name": "parsi.ai"
-        },
-        "m.identity_server": {
-            "base_url": "https://parsi.ai"
         }
     },
     "disable_custom_urls": false,
