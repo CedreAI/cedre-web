@@ -1,24 +1,137 @@
-<html lang="fa">
-    <head>
-        <meta charset="utf-8">
-        <link rel="icon" type="image/x-icon" href="favicon.png">
-        <link rel="stylesheet" href="style.css">
-        <title>
-            فانوس
-        </title>
-    <link rel="preload" href="/fonts\Inter\Inter-BoldItalic.d41d8cd.woff2"><link rel="preload" href="/fonts\Inter\Inter-Bold.d41d8cd.woff2"><link rel="preload" href="/fonts\Inter\Inter-Medium.d41d8cd.woff2"><link rel="preload" href="/fonts\Inter\Inter-SemiBoldItalic.d41d8cd.woff2"><link rel="preload" href="/fonts\Inter\Inter-SemiBold.d41d8cd.woff2"><link rel="preload" href="/fonts\Inter\Inter-MediumItalic.d41d8cd.woff2"><link rel="preload" href="/fonts\Inter\Inter-Italic.d41d8cd.woff2"><link rel="preload" href="/fonts\Inter\Inter-Regular.d41d8cd.woff2"></head>
-    <body>
-        <div id="info">
-            <img src="logo.png" alt="" id="logo"/>
-            <p id="text">
-                پیشنهاد میکنیم برای استفاده راحت تر از فانوس در موبایل، از نسخه اندروید فانوس استفاده نمایید
-            </p>
-            <a id="android" href="https://fanoos.app/fanoos.apk">
-                نصب فانوس اندروید
-            </a>
-            <a id="to-web" href="#">
-                استفاده از نسخه وب
-            </a>
-        </div>
-    <script src="../bundles/2f5307d15c9c453224bf/mobileguide.js"></script></body>
-</html>
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <title>
+        فانوس
+    </title>
+    <style>
+        @font-face {
+            font-family: "iransans";
+            src: url(IranianSans.ttf);
+        }
+
+        @keyframes fanoos {
+            0% {
+                box-shadow: 0 70px 70px 70px rgba(255, 255, 255, 0.383),
+                0 30px 35px 5px rgba(255, 255, 255, 0.335),
+                0 -35px 35px 5px rgba(255, 255, 255, 0.335);
+            }
+            20% {
+                box-shadow: 10px 120px 120px 210px rgba(255, 255, 255, 0.383),
+                50px 30px 35px 5px rgba(255, 255, 255, 0.335),
+                0px -35px -35px -5px rgba(255, 255, 255, 0.335);
+            }
+            40% {
+                box-shadow: 30px 50px 50px 50px rgba(255, 255, 255, 0.383),
+                0 30px 35px 5px rgba(255, 255, 255, 0.335),
+                0 -35px 35px -5px rgba(255, 255, 255, 0.335);
+            }
+            60% {
+                box-shadow: -40px -50px -50px -50px rgba(255, 255, 255, 0.383),
+                10px 0x 0px 5px rgba(255, 255, 255, 0.335),
+                0 0px 0px 5px rgba(255, 255, 255, 0.335);
+            }
+            100% {
+                box-shadow: 0 50px 50px 50px rgba(255, 255, 255, 0.383),
+                0 30px 35px 100px rgba(255, 255, 255, 0.335),
+                0 -35px 35px 100px rgba(255, 255, 255, 0.335);
+            }
+        }
+
+        body {
+            background-image: url(https://github.com/FanoosAI/cedre-web/blob/ac8e94e67151d8fb21a56f0f431e9410a9c9df3a/src/vector/mobile_guide/background.jpg?raw=true);
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        html {
+            overflow: hidden;
+        }
+
+        #info {
+            width: 80%;
+            height: 70%;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.85);
+            flex-direction: column;
+            border-radius: 20px;
+            box-shadow: 0 50px 50px 50px rgba(255, 255, 255, 0.383),
+            0 30px 35px 5px rgba(255, 255, 255, 0.335),
+            0 -35px 35px 5px rgba(255, 255, 255, 0.335);
+            animation-name: fanoos;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+        #logo {
+            width: 80%;
+            height: auto;
+        }
+
+        #text {
+            font-family: iransans, serif;
+            width: 70%;
+            direction: rtl;
+            font-size: 35px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        #to-web {
+            font-family: iransans, serif;
+            width: 40%;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            font-size: 30px;
+            background-color: rgba(255, 53, 9, 0.75);
+            border-radius: 10px;
+            margin-top: 3%;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #4d4d4d;
+        }
+
+        #android {
+            margin-top: 5%;
+            font-family: iransans, serif;
+            width: 50%;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: black;
+            font-size: 40px;
+            background-color: rgba(32, 227, 2, 0.75);
+            border-radius: 10px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #4d4d4d;
+        }
+
+    </style>
+<link rel="preload" href="/fonts\Inter\Inter-BoldItalic.d41d8cd.woff2"><link rel="preload" href="/fonts\Inter\Inter-SemiBoldItalic.d41d8cd.woff2"><link rel="preload" href="/fonts\Inter\Inter-Bold.d41d8cd.woff2"><link rel="preload" href="/fonts\Inter\Inter-Medium.d41d8cd.woff2"><link rel="preload" href="/fonts\Inter\Inter-SemiBold.d41d8cd.woff2"><link rel="preload" href="/fonts\Inter\Inter-Italic.d41d8cd.woff2"><link rel="preload" href="/fonts\Inter\Inter-MediumItalic.d41d8cd.woff2"><link rel="preload" href="/fonts\Inter\Inter-Regular.d41d8cd.woff2"></head>
+<body>
+<div id="info">
+    <img src="https://github.com/FanoosAI/cedre-web/blob/develop/src/vector/mobile_guide/logo.png?raw=true" alt="" id="logo"/>
+    <p id="text">
+        پیشنهاد میکنیم برای استفاده راحت تر از فانوس در موبایل، از نسخه اندروید فانوس استفاده نمایید
+    </p>
+    <a id="android" href="https://fanoos.app/fanoos.apk">
+        نصب فانوس اندروید
+    </a>
+    <a id="to-web" href="#">
+        استفاده از نسخه وب
+    </a>
+</div>
+<script src="../bundles/b2dd87f0c16dc9f20c87/mobileguide.js"></script></body>
