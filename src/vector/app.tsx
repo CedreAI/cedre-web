@@ -182,16 +182,16 @@ export async function loadApp(fragParams: {}) {
 
     const MatrixChat = sdk.getComponent('structures.MatrixChat');
     return <MatrixChat
-    onNewScreen={onNewScreen}
-    makeRegistrationUrl={makeRegistrationUrl}
-    config={config}
-    realQueryParams={params}
-    startingFragmentQueryParams={fragParams}
-    enableGuest={!config.disable_guests}
-    onTokenLoginCompleted={onTokenLoginCompleted}
-    initialScreenAfterLogin={getScreenFromLocation(window.location)}
-    defaultDeviceDisplayName={platform.getDefaultDeviceDisplayName()}
-/>;
+        onNewScreen={onNewScreen}
+        makeRegistrationUrl={makeRegistrationUrl}
+        config={config}
+        realQueryParams={params}
+        startingFragmentQueryParams={fragParams}
+        enableGuest={!config.disable_guests}
+        onTokenLoginCompleted={onTokenLoginCompleted}
+        initialScreenAfterLogin={getScreenFromLocation(window.location)}
+        defaultDeviceDisplayName={platform.getDefaultDeviceDisplayName()}
+    />;
 }
 
 async function verifyServerConfig() {
