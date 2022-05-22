@@ -23,19 +23,17 @@ import olmWasmPath from "@matrix-org/olm/olm.wasm";
 import Olm from '@matrix-org/olm';
 import * as ReactDOM from "react-dom";
 import * as React from "react";
-
 import * as languageHandler from "matrix-react-sdk/src/languageHandler";
 import SettingsStore from "matrix-react-sdk/src/settings/SettingsStore";
-import ElectronPlatform from "./platform/ElectronPlatform";
-import PWAPlatform from "./platform/PWAPlatform";
-import WebPlatform from "./platform/WebPlatform";
 import PlatformPeg from "matrix-react-sdk/src/PlatformPeg";
 import SdkConfig from "matrix-react-sdk/src/SdkConfig";
 import { setTheme } from "matrix-react-sdk/src/theme";
-
-import { initRageshake, initRageshakeStore } from "./rageshakesetup";
-
 import { logger } from "matrix-js-sdk/src/logger";
+
+import ElectronPlatform from "./platform/ElectronPlatform";
+import PWAPlatform from "./platform/PWAPlatform";
+import WebPlatform from "./platform/WebPlatform";
+import { initRageshake, initRageshakeStore } from "./rageshakesetup";
 
 export const rageshakePromise = initRageshake();
 
@@ -65,7 +63,12 @@ export async function loadConfig() {
     // granular settings are loaded correctly and to avoid duplicating the override logic for the theme.
     //
     // Note: this isn't called twice for some wrappers, like the Jitsi wrapper.
-    SdkConfig.put(await PlatformPeg.get().getConfig() || {});
+    const platformConfig = await PlatformPeg.get().getConfig();
+    if (platformConfig) {
+        SdkConfig.put(platformConfig);
+    } else {
+        SdkConfig.unset(); // clears the config (sets to empty object)
+    }
 }
 
 export function loadOlm(): Promise<void> {
@@ -122,27 +125,6 @@ export async function loadLanguage() {
     } catch (e) {
         logger.error("Unable to set language", e);
     }
-}
-
-export async function loadSkin() {
-    // Ensure the skin is the very first thing to load for the react-sdk. We don't even want to reference
-    // the SDK until we have to in imports.
-    logger.log("Loading skin...");
-    // load these async so that its code is not executed immediately and we can catch any exceptions
-    const [sdk, skin] = await Promise.all([
-        import(
-            /* webpackChunkName: "matrix-react-sdk" */
-            /* webpackPreload: true */
-            "matrix-react-sdk"),
-        import(
-            /* webpackChunkName: "element-web-component-index" */
-            /* webpackPreload: true */
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore - this module is generated so may fail lint
-            "../component-index"),
-    ]);
-    sdk.loadSkin(skin);
-    logger.log("Skin loaded!");
 }
 
 export async function loadTheme() {

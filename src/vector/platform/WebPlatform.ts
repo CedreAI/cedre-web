@@ -16,19 +16,18 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import VectorBasePlatform from './VectorBasePlatform';
 import { UpdateCheckStatus } from "matrix-react-sdk/src/BasePlatform";
 import request from 'browser-request';
 import dis from 'matrix-react-sdk/src/dispatcher/dispatcher';
 import { _t } from 'matrix-react-sdk/src/languageHandler';
-import { Room } from "matrix-js-sdk/src/models/room";
 import { hideToast as hideUpdateToast, showToast as showUpdateToast } from "matrix-react-sdk/src/toasts/UpdateToast";
 import { Action } from "matrix-react-sdk/src/dispatcher/actions";
 import { CheckUpdatesPayload } from 'matrix-react-sdk/src/dispatcher/payloads/CheckUpdatesPayload';
-
 import UAParser from 'ua-parser-js';
-
 import { logger } from "matrix-js-sdk/src/logger";
+
+import VectorBasePlatform from './VectorBasePlatform';
+import { parseQs } from "../url_utils";
 
 const POKE_RATE_MS = 10 * 60 * 1000; // 10 min
 
@@ -79,27 +78,6 @@ export default class WebPlatform extends VectorBasePlatform {
         });
     }
 
-    displayNotification(title: string, msg: string, avatarUrl: string, room: Room) {
-        const notifBody = {
-            body: msg,
-            tag: "vector",
-            silent: true, // we play our own sounds
-        };
-        if (avatarUrl) notifBody['icon'] = avatarUrl;
-        const notification = new window.Notification(title, notifBody);
-
-        notification.onclick = function() {
-            dis.dispatch({
-                action: 'view_room',
-                room_id: room.roomId,
-            });
-            window.focus();
-            notification.close();
-        };
-
-        return notification;
-    }
-
     private getMostRecentVersion(): Promise<string> {
         // We add a cachebuster to the request to make sure that we know about
         // the most recent version on the origin server. That might not
@@ -107,7 +85,7 @@ export default class WebPlatform extends VectorBasePlatform {
         // presence of intermediate caching proxies), but still: we're trying
         // to tell the user that there is a new version.
 
-        return new Promise(function(resolve, reject) {
+        return new Promise((resolve, reject) => {
             request(
                 {
                     method: "GET",
@@ -121,43 +99,76 @@ export default class WebPlatform extends VectorBasePlatform {
                         return;
                     }
 
-                    const ver = body.trim();
-                    resolve(ver);
+                    resolve(this.getNormalizedAppVersion(body.trim()));
                 },
             );
         });
     }
 
-    getAppVersion(): Promise<string> {
-        let ver = process.env.VERSION;
-
-        // if version looks like semver with leading v, strip it
-        // (matches scripts/package.sh)
-        const semVerRegex = new RegExp("^v[0-9]+.[0-9]+.[0-9]+(-.+)?$");
-        if (semVerRegex.test(process.env.VERSION)) {
-            ver = process.env.VERSION.substr(1);
+    getNormalizedAppVersion(version: string): string {
+        // if version looks like semver with leading v, strip it (matches scripts/normalize-version.sh)
+        const semVerRegex = /^v\d+.\d+.\d+(-.+)?$/;
+        if (semVerRegex.test(version)) {
+            return version.substring(1);
         }
-        return Promise.resolve(ver);
+        return version;
+    }
+
+    getAppVersion(): Promise<string> {
+        return Promise.resolve(this.getNormalizedAppVersion(process.env.VERSION));
     }
 
     startUpdater() {
-        this.pollForUpdate();
-        setInterval(this.pollForUpdate, POKE_RATE_MS);
+        // Poll for an update immediately, and reload the page now if we're out of date
+        // already as we've just initialised an old version of the app somehow.
+        //
+        // Forcibly reloading the page aims to avoid users interacting at all with the old
+        // and potentially broken version of the app.
+        //
+        // Ideally, loading an old copy would be impossible with the
+        // cache-control: nocache HTTP header set, but Firefox doesn't always obey it :/
+        console.log("startUpdater, current version is " + this.getNormalizedAppVersion(process.env.VERSION));
+        this.pollForUpdate((version: string, newVersion: string) => {
+            const query = parseQs(location);
+            if (query.updated) {
+                console.log("Update reloaded but still on an old version, stopping");
+                // We just reloaded already and are still on the old version!
+                // Show the toast rather than reload in a loop.
+                showUpdateToast(version, newVersion);
+                return;
+            }
+
+            // Set updated as a cachebusting query param and reload the page.
+            const url = new URL(window.location.href);
+            url.searchParams.set("updated", newVersion);
+            console.log("Update reloading to " + url.toString());
+            window.location.href = url.toString();
+        });
+        setInterval(() => this.pollForUpdate(showUpdateToast, hideUpdateToast), POKE_RATE_MS);
     }
 
     async canSelfUpdate(): Promise<boolean> {
         return true;
     }
 
-    pollForUpdate = () => {
+    pollForUpdate = (
+        showUpdate: (currentVersion: string, mostRecentVersion: string) => void,
+        showNoUpdate?: () => void,
+    ) => {
         return this.getMostRecentVersion().then((mostRecentVersion) => {
-            if (process.env.VERSION !== mostRecentVersion) {
+            const currentVersion = this.getNormalizedAppVersion(process.env.VERSION);
+
+            if (currentVersion !== mostRecentVersion) {
                 if (this.shouldShowUpdate(mostRecentVersion)) {
-                    showUpdateToast(process.env.VERSION, mostRecentVersion);
+                    console.log("Update available to " + mostRecentVersion + ", will notify user");
+                    showUpdate(currentVersion, mostRecentVersion);
+                } else {
+                    console.log("Update available to " + mostRecentVersion + " but won't be shown");
                 }
                 return { status: UpdateCheckStatus.Ready };
             } else {
-                hideUpdateToast();
+                console.log("No update available, already on " + mostRecentVersion);
+                showNoUpdate?.();
             }
 
             return { status: UpdateCheckStatus.NotAvailable };
@@ -172,7 +183,7 @@ export default class WebPlatform extends VectorBasePlatform {
 
     startUpdateCheck() {
         super.startUpdateCheck();
-        this.pollForUpdate().then((updateState) => {
+        this.pollForUpdate(showUpdateToast, hideUpdateToast).then((updateState) => {
             dis.dispatch<CheckUpdatesPayload>({
                 action: Action.CheckUpdates,
                 ...updateState,

@@ -27,10 +27,6 @@ const VectorAuthFooter = () => {
         { "text": "گیتهاب", "url": "https://github.com/vector-im/element-web" },
     ];
 
-    if (brandingConfig && brandingConfig.authFooterLinks) {
-        links = brandingConfig.authFooterLinks;
-    }
-
     const authFooterLinks = [];
     for (const linkEntry of links) {
         authFooterLinks.push(
@@ -45,7 +41,5 @@ const VectorAuthFooter = () => {
         </div>
     );
 };
-
-VectorAuthFooter.replaces = 'AuthFooter';
 
 export default VectorAuthFooter;

@@ -21,17 +21,18 @@ Enables rendering of LaTeX maths in messages using [KaTeX](https://katex.org/). 
 Allows you to pin messages in the room. To pin a message, use the 3 dots to the right of the message
 and select "Pin".
 
-## Custom status (`feature_custom_status`)
+## Jump to date (`feature_jump_to_date`)
 
-An experimental approach for supporting custom status messages across DMs. To set a status, click on
-your avatar next to the message composer.
+Note: This labs feature is only visible when your homeserver has MSC3030 enabled
+(in Synapse, add `experimental_features` -> `msc3030_enabled` to your
+`homeserver.yaml`) which means `GET /_matrix/client/versions` responds with
+`org.matrix.msc3030` under the `unstable_features` key.
 
-## Custom tags (`feature_custom_tags`)
+Adds a dropdown menu to the date separator headers in the timeline which allows
+you to jump to last week, last month, the beginning of the room, or choose a
+date from the calendar.
 
-An experimental approach for dealing with custom tags. Custom tags will appear in the bottom portion
-of the community filter panel.
-
-Setting custom tags is not supported by Element.
+Also adds the `/jumptodate 2022-01-31` slash command.
 
 ## Render simple counters in room header (`feature_state_counters`)
 
@@ -55,10 +56,6 @@ Once enabled, send a custom state event to a room to set values:
 ```
 
 That's it. Now should see your new counter under the header.
-
-## Multiple integration managers (`feature_many_integration_managers`)
-
-Exposes a way to access all the integration managers known to Element. This is an implementation of [MSC1957](https://github.com/matrix-org/matrix-doc/pull/1957).
 
 ## New ways to ignore people (`feature_mjolnir`)
 
@@ -102,55 +99,83 @@ For some sample themes, check out [aaronraimist/element-themes](https://github.c
 
 ## Message preview tweaks
 
-To enable message previews for reactions in all rooms, enable `feature_roomlist_preview_reactions_all`.
-To enable message previews for reactions in DMs, enable `feature_roomlist_preview_reactions_dms`, ignored when it is enabled for all rooms.
+To enable message previews in the left panel for reactions in all rooms, enable `feature_roomlist_preview_reactions_all`.
 
-## Communities v2 prototyping (`feature_communities_v2_prototypes`) [In Development]
-
-**This is a highly experimental implementation for parts of the communities v2 experience.** It does not
-represent what communities v2 will look/feel like and can/will change without notice. Due to the early
-stages this feature is in and the requirement for a compatible homeserver, we will not be accepting issues
-or feedback for this functionality at this time.
+To enable message previews for reactions in DMs only, enable `feature_roomlist_preview_reactions_dms`. This is ignored when it is enabled for all rooms.
 
 ## Dehydrated devices (`feature_dehydration`)
 
 Allows users to receive encrypted messages by creating a device that is stored
 encrypted on the server, as described in [MSC2697](https://github.com/matrix-org/matrix-doc/pull/2697).
 
-## Do not disturb (`feature_dnd`)
-
-Enables UI for turning on "do not disturb" mode for the current device. When DND mode is engaged, popups
-and notification noises are suppressed. Not perfect, but can help reduce noise.
-
 ## Hidden read receipts (`feature_hidden_read_receipts`)
 
 Enables sending hidden read receipts as per [MSC2285](https://github.com/matrix-org/matrix-doc/pull/2285)
 
-## New layout switcher (with message bubbles) (`feature_new_layout_switcher`)
+## Breadcrumbs v2 (`feature_breadcrumbs_v2`)
 
-Adds a "Message layout" section under `Settings -> Appearance`, where the user can select their preferred message layout (e.g. IRC or Modern). Additionally, adds a new "Message bubbles" layout.
+Instead of showing the horizontal list of breadcrumbs under the filter field, the new UX is an interactive context menu
+triggered by the button to the right of the filter field.
 
-## Pseudonymous Analytics opt-in (`feature_pseudonymous_analytics_opt_in`)
+## Spotlight search (`feature_spotlight`) [In Development]
 
-Opts in to collection of pseudonymous analytics data via Posthog. See https://github.com/matrix-org/matrix-react-sdk/pull/6495
+Switches to a new room search experience.
 
-## Polls (`feature_polls`) [In Development]
+## Extensible events rendering (`feature_extensible_events`) [In Development]
 
-Polls are a way to gauge interest from your community about a certain topic with a simple voting mechanic
-within the message timeline. Note that this feature is currently under active development and therefore is
-entirely incomplete and may not work at all - it is not recommended for general use at this time.
+*Intended for developer use only at the moment.*
 
-Bug reports, feature requests, etc are not currently accepted for this feature flag. A later stage of
-development will provide opportunities for feedback.
+Extensible Events are a [new event format](https://github.com/matrix-org/matrix-doc/pull/1767) which
+supports graceful fallback in unknown event types. Instead of rendering nothing or a blank space, events
+can define a series of other events which represent the event's information but in different ways. The
+base of these fallbacks being text.
 
-## Maximised widgets (`feature_maximised_widgets`) [In Development]
+Turning this flag on indicates that, when possible, the extensible events structure should be parsed on
+supported event types. This should lead to zero perceptual change in the timeline except in cases where
+the sender is using unknown/unrecognised event types.
 
-Maximised widgets provide a room layout in which a widget is (temporarily) the primary focus of the room. The whole chat area is then used for the widget. The chat is moved into the right panel.
+Sending events with extensible events structure is always enabled - this should not affect any downstream
+client.
 
-Note that this feature is currently under active development and therefore is
-entirely incomplete and may not work at all - it is not recommended for general use at this time.
+## Right panel stays open (`feature_right_panel_default_open`)
 
-## Metaspaces (`feature_spaces_metaspaces`) [In Development]
+This is an experimental default open right panel mode as a quick fix for those
+who prefer to have the right panel open consistently across rooms.
 
-Metaspaces are automatically populated spaces you can enable in your Space panel.
-By default, you'll have Home or All rooms, but you can opt in to a People, Favourites, and Other Rooms metaspace too.
+If no right panel state is known for the room or it was closed on the last room
+visit, it will default to the room member list. Otherwise, the saved card last
+used in that room is shown.
+
+## Show current profile of users on historical messages (`feature_use_only_current_profiles`)
+
+An experimental flag to determine how the app would behave if a user's current display
+name and avatar (profile) were shown on historical messages instead of the profile details
+at the time when the message was sent.
+
+When enabled, historical messages will use the current profile for the sender.
+
+## Pin drop location sharing (`feature_location_share_pin_drop`) [In Development]
+
+Enables sharing a pin drop location to the timeline.
+
+## Live location sharing (`feature_location_share_live`) [In Development]
+
+Enables sharing your current location to the timeline, with live updates.
+
+## Threaded Messaging (`feature_thread`)
+
+Threading allows users to branch out a new conversation from the main timeline of a room. This is particularly useful in high traffic rooms where multiple conversations can happen in parallel or when a single discussion might stretch over a very long period of time.
+
+Threads can be access by clicking their summary below the root event on the room timeline. Users can find a comprehensive list of threads by click the icon on the room header button.
+
+This feature might work in degraded mode if the homeserver a user is connected to does not advertise support for the unstable feature `org.matrix.msc3440`  when calling the `/versions` API endpoint.
+
+## Right-click Message Context Menu (`feature_message_right_click_context_menu`)
+
+Enables showing a right-click context menu when right-clicking messages in the
+timeline. This menu shows options that can usually be found in the message
+action bar or in the message options.
+
+## Voice & video rooms (`feature_video_rooms`) [In Development]
+
+Enables support for creating and joining video rooms, which are persistent video chats that users can jump in and out of.
