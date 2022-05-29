@@ -11,5 +11,4 @@ popd
 cd element-web
 yarn link matrix-js-sdk
 yarn link matrix-react-sdk
-yarn reskindex
 yarn start
