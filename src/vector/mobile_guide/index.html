@@ -1,139 +1,202 @@
-<html lang="fa">
-    <head>
-        <meta charset="utf-8">
-        <link rel="icon" type="image/x-icon" href="favicon.png">
-        <title>
-            فانوس
-        </title>
-        <style>
-            @font-face {
-                font-family: "iransans";
-                src: url(IranianSans.ttf);
-            }
+<?xml version="1.0" encoding="UTF-8"?>
+<html dir="rtl" lang="fa">
 
-            @keyframes fanoos {
-                0% {
-                    box-shadow: 0 70px 70px 70px rgba(255, 255, 255, 0.383),
-                    0 30px 35px 5px rgba(255, 255, 255, 0.335),
-                    0 -35px 35px 5px rgba(255, 255, 255, 0.335);
-                }
-                20% {
-                    box-shadow: 10px 120px 120px 210px rgba(255, 255, 255, 0.383),
-                    50px 30px 35px 5px rgba(255, 255, 255, 0.335),
-                    0px -35px -35px -5px rgba(255, 255, 255, 0.335);
-                }
-                40% {
-                    box-shadow: 30px 50px 50px 50px rgba(255, 255, 255, 0.383),
-                    0 30px 35px 5px rgba(255, 255, 255, 0.335),
-                    0 -35px 35px -5px rgba(255, 255, 255, 0.335);
-                }
-                60% {
-                    box-shadow: -40px -50px -50px -50px rgba(255, 255, 255, 0.383),
-                    10px 0x 0px 5px rgba(255, 255, 255, 0.335),
-                    0 0px 0px 5px rgba(255, 255, 255, 0.335);
-                }
-                100% {
-                    box-shadow: 0 50px 50px 50px rgba(255, 255, 255, 0.383),
-                    0 30px 35px 100px rgba(255, 255, 255, 0.335),
-                    0 -35px 35px 100px rgba(255, 255, 255, 0.335);
-                }
-            }
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<head>
+    <meta charset="utf-8" />
+
+    <link href="http://fonts.cdnfonts.com/css/iranian-sans" rel="stylesheet">
+    <style type="text/css">
+        #custom_is,
+        #is_url {
+            display: none;
+        }
+
+        body {
+            background: #f9fafb;
+            max-width: 680px;
+            margin: auto;
+            font-family: 'Iranian Sans', sans-serif;
+        }
+
+        .mx_Button {
+            border: 0;
+            border-radius: 4px;
+            font-size: 18px;
+            margin-left: 4px;
+            margin-right: 4px;
+            min-width: 80px;
+            background-color: #03B381;
+            color: #fff;
+            cursor: pointer;
+            padding: 12px 22px;
+            word-break: break-word;
+            text-decoration: none;
+        }
+
+        .mx_Center {
+            justify-content: center;
+        }
+
+        .mx_ClearDecoration {
+            text-decoration: none !important;
+        }
+
+        .mx_HomePage_header {
+            color: #2E2F32;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mx_HomePage h3 {
+            margin-top: 30px;
+        }
+
+        .mx_HomePage_header {
+            align-items: center;
+        }
+
+        .mx_HomePage_col {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .mx_HomePage_row {
+            flex: 1 1 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .mx_HomePage_logo {
+            margin-right: 20px;
+        }
+
+        .mx_HomePage_container {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 80px);
+            /* margin: 10px 20px; */
+            border: 1px solid #aaa;
+            border-radius: 30px;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        .mx_HomePage_errorContainer {
+            display: none;
+            /* shown in JS if needed */
+            margin: 20px;
+            border: 1px solid red;
+            background-color: #ffb9b9;
+            padding: 5px;
+        }
+
+        .mx_HomePage_container h1,
+        .mx_HomePage_container h2,
+        .mx_HomePage_container h3,
+        .mx_HomePage_container h4 {
+            font-weight: 600;
+            margin-bottom: 32px;
+        }
+
+        .mx_Spacer {
+            margin-top: 24px;
+        }
+
+        .mx_FooterLink {
+            color: #0dbd8b;
+            text-decoration: none;
+        }
+
+        .mx_Subtext {
+            font-size: 14px;
+        }
+
+        .mx_SubtextTop {
+            margin-top: 32px;
+        }
+
+        .mx_app_icon {
+            width: 200px;
+        }
+        .mx_icon{
+            width: 150px;
+        }
+
+        @media screen and (max-width: 1120px) {
             body {
-                background-image: url(background.jpg);
-                background-repeat: no-repeat;
-                background-size: cover;
-                width: 100vw;
-                height: 100vh;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                font-size: 20px;
             }
 
-            html {
-                overflow: hidden;
+            h1 {
+                font-size: 20px;
             }
 
-            #info {
-                width: 80%;
-                height: 70%;
-                display: flex;
-                justify-content: start;
-                align-items: center;
-                background-color: rgba(255, 255, 255, 0.85);
-                flex-direction: column;
-                border-radius: 20px;
-                box-shadow: 0 50px 50px 50px rgba(255, 255, 255, 0.383),
-                0 30px 35px 5px rgba(255, 255, 255, 0.335),
-                0 -35px 35px 5px rgba(255, 255, 255, 0.335);
-                animation-name: fanoos;
-                animation-duration: 5s;
-                animation-iteration-count: infinite;
-                animation-direction: alternate;
+            h4 {
+                font-size: 16px;
             }
 
-            #logo {
-                width: 100%;
-                height: auto;
+            .mx_Button {
+                font-size: 18px;
+                padding: 14px 28px;
             }
 
-            #text {
-                font-family: iransans, serif;
-                width: 70%;
-                direction: rtl;
-                font-size: 40px;
-                border-radius: 5px;
-                text-align: center;
+            .mx_HomePage_header {
+                justify-content: left;
             }
 
-            #to-web {
-                font-family: iransans, serif;
-                width: 40%;
-                text-align: center;
-                justify-content: center;
-                align-items: center;
-                text-decoration: none;
-                color: white;
-                font-size: 30px;
-                background-color: #ff3509;
-                border-radius: 10px;
-                margin-top: 5%;
-                border-style: solid;
-                border-width: 1px;
-                border-color: #4d4d4d;
+            .mx_Spacer {
+                margin-top: 24px;
             }
+        }
+    </style>
 
-            #android {
-                margin-top: 10%;
-                font-family: iransans, serif;
-                width: 50%;
-                text-align: center;
-                justify-content: center;
-                align-items: center;
-                text-decoration: none;
-                color: black;
-                font-size: 40px;
-                background-color: #20e302;
-                border-radius: 10px;
-                border-style: solid;
-                border-width: 1px;
-                border-color: #4d4d4d;
-            }
+    <meta name="apple-itunes-app" content="app-id=id1083446067">
 
-        </style>
-    </head>
-    <body>
-        <div id="info">
-            <img src="logo.png" alt="" id="logo"/>
-            <p id="text">
-                پیشنهاد میکنیم برای استفاده راحت تر از فانوس در موبایل، از نسخه اندروید فانوس استفاده نمایید
-            </p>
-            <a id="android" href="https://fanoos.app/fanoos.apk">
-                نصب فانوس اندروید
-            </a>
-            <a id="to-web" href="#">
-                استفاده از نسخه وب
-            </a>
+    <link rel="preload" href="/fonts\Inter\Inter-Bold.d41d8cd.woff2">
+    <link rel="preload" href="/fonts\Inter\Inter-BoldItalic.d41d8cd.woff2">
+    <link rel="preload" href="/fonts\Inter\Inter-SemiBoldItalic.d41d8cd.woff2">
+    <link rel="preload" href="/fonts\Inter\Inter-MediumItalic.d41d8cd.woff2">
+    <link rel="preload" href="/fonts\Inter\Inter-SemiBold.d41d8cd.woff2">
+    <link rel="preload" href="/fonts\Inter\Inter-Italic.d41d8cd.woff2">
+    <link rel="preload" href="/fonts\Inter\Inter-Medium.d41d8cd.woff2">
+    <link rel="preload" href="/fonts\Inter\Inter-Regular.d41d8cd.woff2">
+</head>
+
+<body>
+    <center>
+        <div class="mx_HomePage_errorContainer">
+            <!-- populated by JS if needed -->
         </div>
-    </body>
+
+        <div class="mx_HomePage_container">
+            <div class="">
+                    <img src="https://static.fanoos.app/img/logo.png" class="mx_icon">
+            </div>
+            <p>فانوس برای تلفن همراه</p>
+
+            <div class="mx_HomePage_row mx_Center mx_Spacer">
+                پیشنهاد می‌کنیم جهت استفاده راحت‌تر از نسخه وب، از تلفن همراه استفاده نفرمایید.
+               
+            </div>
+            <div>
+                <h4 id="step1_heading">نصب فانوس اندروید</h4>
+                <a href='https://fanoos.app/fanoos.apk'>
+                    <img src="https://static.fanoos.app/img/Android.png" class="mx_app_icon">
+                </a>
+            </div>
+
+            <p class="mx_Spacer">
+                <a id="back_to_element_button" href="https://fanoos.app/#/welcome" class="mx_FooterLink">
+                    نسخه قابل اجرا در مرورگر
+                </a>
+            </p>
+        </div>  
+    </center>
+    <script src="../bundles/882d95d55d47159ff401/mobileguide.js"></script>
+</body>
+
 </html>
