@@ -21,5 +21,4 @@ electron/pub
 .vscode/
 .env
 
-/webapp
 webapp.zip
