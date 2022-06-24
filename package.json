@@ -70,6 +70,7 @@
     "react-dom": "17.0.2",
     "react-minimal-pie-chart": "^8.2.0",
     "react-persian": "^1.1.1",
+    "reactrangeslider": "^3.0.6",
     "sanitize-html": "^2.3.2",
     "ua-parser-js": "^0.7.24"
   },
