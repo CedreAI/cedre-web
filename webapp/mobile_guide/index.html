@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html dir="rtl" lang="fa">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <meta charset="utf-8" />
+
+    <link href="http://fonts.cdnfonts.com/css/iranian-sans" rel="stylesheet">
+    <style type="text/css">
+        #custom_is,
+        #is_url {
+            display: none;
+        }
+
+        body {
+            background: #f9fafb;
+            max-width: 680px;
+            margin: auto;
+            font-family: 'Iranian Sans', sans-serif;
+        }
+
+        .mx_Button {
+            border: 0;
+            border-radius: 4px;
+            font-size: 18px;
+            margin-left: 4px;
+            margin-right: 4px;
+            min-width: 80px;
+            background-color: #03B381;
+            color: #fff;
+            cursor: pointer;
+            padding: 12px 22px;
+            word-break: break-word;
+            text-decoration: none;
+        }
+
+        .mx_Center {
+            justify-content: center;
+        }
+
+        .mx_ClearDecoration {
+            text-decoration: none !important;
+        }
+
+        .mx_HomePage_header {
+            color: #2E2F32;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mx_HomePage h3 {
+            margin-top: 30px;
+        }
+
+        .mx_HomePage_header {
+            align-items: center;
+        }
+
+        .mx_HomePage_col {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .mx_HomePage_row {
+            flex: 1 1 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .mx_HomePage_logo {
+            margin-right: 20px;
+        }
+
+        .mx_HomePage_container {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 80px);
+            /* margin: 10px 20px; */
+            border: 1px solid #aaa;
+            border-radius: 30px;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        .mx_HomePage_errorContainer {
+            display: none;
+            /* shown in JS if needed */
+            margin: 20px;
+            border: 1px solid red;
+            background-color: #ffb9b9;
+            padding: 5px;
+        }
+
+        .mx_HomePage_container h1,
+        .mx_HomePage_container h2,
+        .mx_HomePage_container h3,
+        .mx_HomePage_container h4 {
+            font-weight: 600;
+            margin-bottom: 32px;
+        }
+
+        .mx_Spacer {
+            margin-top: 24px;
+        }
+
+        .mx_FooterLink {
+            color: #0dbd8b;
+            text-decoration: none;
+        }
+
+        .mx_Subtext {
+            font-size: 14px;
+        }
+
+        .mx_SubtextTop {
+            margin-top: 32px;
+        }
+
+        .mx_app_icon {
+            width: 200px;
+        }
+        .mx_icon{
+            width: 150px;
+        }
+
+        @media screen and (max-width: 1120px) {
+            body {
+                font-size: 20px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            h4 {
+                font-size: 16px;
+            }
+
+            .mx_Button {
+                font-size: 18px;
+                padding: 14px 28px;
+            }
+
+            .mx_HomePage_header {
+                justify-content: left;
+            }
+
+            .mx_Spacer {
+                margin-top: 24px;
+            }
+        }
+    </style>
+
+    <meta name="apple-itunes-app" content="app-id=id1083446067">
+
+    <link rel="preload" href="/fonts\Inter\Inter-Bold.d41d8cd.woff2">
+    <link rel="preload" href="/fonts\Inter\Inter-BoldItalic.d41d8cd.woff2">
+    <link rel="preload" href="/fonts\Inter\Inter-SemiBoldItalic.d41d8cd.woff2">
+    <link rel="preload" href="/fonts\Inter\Inter-MediumItalic.d41d8cd.woff2">
+    <link rel="preload" href="/fonts\Inter\Inter-SemiBold.d41d8cd.woff2">
+    <link rel="preload" href="/fonts\Inter\Inter-Italic.d41d8cd.woff2">
+    <link rel="preload" href="/fonts\Inter\Inter-Medium.d41d8cd.woff2">
+    <link rel="preload" href="/fonts\Inter\Inter-Regular.d41d8cd.woff2">
+<link rel="preload" href="/fonts/Inter/Inter-BoldItalic.d41d8cd.woff2"><link rel="preload" href="/fonts/Inter/Inter-Bold.d41d8cd.woff2"><link rel="preload" href="/fonts/Inter/Inter-SemiBoldItalic.d41d8cd.woff2"><link rel="preload" href="/fonts/Inter/Inter-SemiBold.d41d8cd.woff2"><link rel="preload" href="/fonts/Inter/Inter-MediumItalic.d41d8cd.woff2"><link rel="preload" href="/fonts/Inter/Inter-Medium.d41d8cd.woff2"><link rel="preload" href="/fonts/Inter/Inter-Italic.d41d8cd.woff2"><link rel="preload" href="/fonts/Inter/Inter-Regular.d41d8cd.woff2"></head>
+
+<body>
+    <center>
+        <div class="mx_HomePage_errorContainer">
+            <!-- populated by JS if needed -->
+        </div>
+
+        <div class="mx_HomePage_container">
+            <div class="">
+                    <img src="https://static.fanoos.app/img/logo.png" class="mx_icon">
+            </div>
+            <p>فانوس برای تلفن همراه</p>
+
+            <div class="mx_HomePage_row mx_Center mx_Spacer">
+                پیشنهاد می‌کنیم جهت استفاده راحت‌تر از نسخه وب، از تلفن همراه استفاده نفرمایید.
+               
+            </div>
+            <div>
+                <h4 id="step1_heading">نصب فانوس اندروید</h4>
+                <a href='https://dev.fanoos.app/fanoos.apk'>
+                    <img src="https://static.fanoos.app/img/Android.png" class="mx_app_icon">
+                </a>
+            </div>
+
+            <p class="mx_Spacer">
+                <a id="back_to_element_button" href="../#/welcome" class="mx_FooterLink">
+                    نسخه قابل اجرا در مرورگر
+                </a>
+            </p>
+        </div>  
+    </center>
+    <script src="../bundles/882d95d55d47159ff401/mobileguide.js"></script>
+<script src="../bundles/6da878daa48d8f099323/mobileguide.js"></script></body>
+
+</html>

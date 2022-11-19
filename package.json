@@ -66,6 +66,10 @@
     "prop-types": "^15.7.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-input-range": "^1.3.0",
+    "react-minimal-pie-chart": "^8.2.0",
+    "react-persian": "^1.1.1",
+    "reactrangeslider": "^3.0.6",
     "sanitize-html": "^2.3.2",
     "ua-parser-js": "^0.8.0"
   },

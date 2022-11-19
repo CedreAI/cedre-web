@@ -5,16 +5,14 @@
 /lib
 /node_modules
 /packages/
-/webapp
 /.npmrc
 /*.log
 package-lock.json
 .DS_Store
 electron/dist
 electron/pub
+/webapp
 **/.idea
-/config.json
-/config.json.*
 /config.local*.json
 # Legacy skinning file that some people might still have
 /src/component-index.js
@@ -27,3 +25,5 @@ electron/pub
 # Auto-generated file
 /src/modules.ts
 /build_config.yaml
+
+webapp.zip
