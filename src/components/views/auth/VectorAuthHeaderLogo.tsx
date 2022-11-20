@@ -23,12 +23,7 @@ export default class VectorAuthHeaderLogo extends React.PureComponent {
         const brandingConfig = SdkConfig.getObject("branding");
         const logoUrl = brandingConfig?.get("auth_header_logo_url") ?? "themes/element/img/logos/element-logo.svg";
 
-    render() {
-        const brandingConfig = SdkConfig.get().branding;
-        let logoUrl = "https://static.fanoos.app/img/logo.png";
-        if (brandingConfig && brandingConfig.authHeaderLogoUrl) {
-            logoUrl = brandingConfig.authHeaderLogoUrl;
-        }
+        // let logoUrl = "https://static.fanoos.app/img/logo.png";
 
         return (
             <aside className="mx_AuthHeaderLogo">
