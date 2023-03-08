@@ -15,6 +15,7 @@
     "brand": "فانوس",
     "integrations_ui_url": "https://scalar.vector.im/",
     "integrations_rest_url": "https://scalar.vector.im/api",
+    "auth_header_logo_url":"https://static.fanoos.app/img/logo.png",
     "integrations_widgets_urls": [
         "https://scalar.vector.im/_matrix/integrations/v1",
         "https://scalar.vector.im/api",

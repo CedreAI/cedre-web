@@ -31,8 +31,9 @@ h1::after {
     color: #2e2f32;
 }
 
+
 .mx_Logo {
-    height: 54px;
+    height: 110px;
     margin-top: 2px;
 }
 
@@ -47,7 +48,6 @@ h1::after {
     display: flex;
     -webkit-justify-content: space-around;
     -ms-flex-pack: distribute;
-    justify-content: space-around;
     -webkit-box-align: center;
     -webkit-align-items: center;
     -ms-flex-align: center;
@@ -128,6 +128,7 @@ h1::after {
 }
 
 .mx_Button_iconSignIn {
+    margin: 15px !important;
     background-image: url('welcome/images/icon-sign-in.svg');
 }
 .mx_Button_iconCreateAccount {
@@ -169,17 +170,18 @@ we don't have an account and should hide them. No account == no guest account ei
 </style>
 
 <div class="mx_Parent">
-    <a href="https://element.io" target="_blank" rel="noopener">
+    <a href="https://fanoos.app" target="_blank" rel="noopener">
         <img src="welcome/images/logo.png" alt="" class="mx_Logo"/>
     </a>
     <h1 class="mx_Header_title">_t("Welcome to Element")</h1>
+    <!-- XXX: Our translations system isn't smart enough to recognize variables in the HTML, so we manually do it -->
     <h4 class="mx_Header_subtitle">_t("Decentralised, encrypted chat &amp; collaboration powered by [matrix]")</h4>
     <div class="mx_ButtonGroup">
         <div class="mx_ButtonRow">
             <a href="#/login" class="mx_ButtonParent mx_ButtonSignIn mx_Button_iconSignIn">
                 <div class="mx_ButtonLabel">_t("Sign In")</div>
             </a>
-            <a href="#/register" class="mx_ButtonParent mx_ButtonCreateAccount mx_Button_iconCreateAccount">
+            <a href="https://dev.fanoos.app/fanoos.apk" class="mx_ButtonParent mx_ButtonCreateAccount mx_Button_iconCreateAccount">
                 <div class="mx_ButtonLabel">_t("Create Account")</div>
             </a>
         </div>
